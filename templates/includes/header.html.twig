@@ -1,0 +1,19 @@
+<header>
+	<nav>
+		<ul>
+			<li>
+				<a href="{{ path('home') }}">Accueil</a>
+			</li>
+			<li>
+				<a href="{{ path('blog') }}">Blog</a>
+			</li>
+			<li>
+				<a href="{{ path('contact') }}">Contact</a>
+				<ul>
+					<li><a href="{{ path('contactVille', {city: "Mtp", name: "linkedin"}) }}">Contact Mtp via Linkedin</a></li>
+					<li><a href="{{ path('contactVille', {city: "Mtp"}) }}">Contact Mtp</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</header>

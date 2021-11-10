@@ -1,30 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact Ville!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello controleur : {{ controller_name }}! ✅</h1>
-
 
     {% if city is defined and city is not empty %}        
-        <p>On est au campus de {{city}}</p>
+        <h1>Contacter {{ city }} </h1>
+    {% else %}
+        <h1>Contact</h1>
     {% endif %}
 
-
-    {% if name is defined and name is not empty %}        
-        <p>Salut : {{name}}</p>
+    {% if name is defined and name is not empty %}
+        <p>Via : {{name}}</p>
     {% endif %}
-     
 
-    {# <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/EPSI/B2/php symphonie cours/blog/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/EPSI/B2/php symphonie cours/blog/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul> #}
-</div>
 {% endblock %}
+
+
+{# ✅ #}
