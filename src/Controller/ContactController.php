@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ContactRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,6 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
+
+    private $contactRepository;
+
+    public function __construct(ContactRepository $contactRepository){
+        $this->contactRepository = $contactRepository;
+    }
+
+
     /**
      * @Route("/contact", name="contact")
      */
@@ -16,8 +25,20 @@ class ContactController extends AbstractController
     {
         return $this->render('contact/contact.html.twig', [
             'controller_name' => 'simple contact',
+            'contacts' => $this->contactRepository->findAll()
         ]);  
     }
+
+
+    // /**
+    //  * @Route("/contact/api", name="contactApi")
+    //  */
+    // public function contactApi(): Response
+    // {
+    //     return new JsonResponse([
+
+    //     ]) ;
+    // }
 
 
     /**

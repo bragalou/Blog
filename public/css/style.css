@@ -2,7 +2,7 @@ main{
     min-height: 70vh;
 }
 h1{
-    color: red;
+    /* color: red; */
     text-align: center;
     font-weight: bold;
     font-size: 45px;
@@ -20,4 +20,9 @@ footer{
 
     color: white;
     font-weight: bold;
+}
+
+
+table{
+    border: 1px solid gray;
 }
