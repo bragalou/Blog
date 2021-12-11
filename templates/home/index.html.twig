@@ -6,9 +6,13 @@
 {% block body %}
 	
 	<h1>Bienvenue sur mon blog</h1>
+	<h1><u><strong style="color: red">Attention !</strong> Ceci n'est pas le TP, il se trouve dans la page tp (ou <a href="{{ path('tp') }}">ici</a>)</u></h1>
 	
 	<img src="{{ asset('img/blog.gif') }}" alt="Img"/>
 
-	{{form(form)}}
+	<div class="Centrer" style="align-items: flex-start;"> 
+		{{form(form)}}
+	</div>
+	
 
 {% endblock %}

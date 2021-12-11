@@ -19,6 +19,7 @@ class HomeController extends AbstractController
     {
         $article = new Article();
         $form = $this->createForm(AjouterArticleType::class, $article);
+        //$form->add('Enregistrer','submit');
         $form->handleRequest($request);
 
         dump($form->getViewData());
@@ -27,14 +28,18 @@ class HomeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($form->getData());
             $entityManager->flush();
-            //$article = $form->getData();
+            $article = $form->getData();
 
-            //return new Response('envoyer');
+            //return header('Location: http://127.0.0.1:8000/blog');
+            // return new Response('envoyer');
+            // dump("en base !");
+            return $this->redirectToRoute('blog');
+
         }
 
         return $this->renderForm('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'form' => $form
+            'form' => $form,
         ]);
     }
 

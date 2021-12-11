@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TP{% endblock %}
+
+{% block body %}
+
+<div class="Centrer"> 
+
+    <h1 style="margin-bottom: 50px;">Hello {{ controller_name }}! ✅</h1>
+
+    <h2>Ajouter un nouveau contact</h2>
+    {{form(form)}}
+
+
+
+    {# espace #}<div style="height: 120px;"></div>
+
+
+    {% set numberOfTpContact = tpContacts | length %}
+    <h2>Mes demandes de contact ({{numberOfTpContact}})</h2>
+    {% if numberOfTpContact > 0 %}
+        <div style="display: flex; flex-direction: column;">
+        {% for tpcontact in tpContacts %}
+            <a href="{{path('detailTpContact', {id: tpcontact.id}) }}">
+                Demande de contact de {{tpcontact.firstname}} {{tpcontact.name}}
+            </a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun contact enregistré</p>
+    {% endif %}
+
+
+
+    {# espace #}<div style="height: 120px;"></div>
+
+
+    <h2>Tableau de la liste des demandes de contact</h2>
+    <table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Prénom</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Age</th>
+				<th scope="col">newsletter</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% if numberOfTpContact > 0 %}
+                {% for tpcontact in tpContacts %}
+                    <tr>
+                        <td>
+                            {{tpcontact.id}}
+                        </td>
+                        <td>
+                            {{tpcontact.firstname}}
+                        </td>
+                        <td>
+                            {{tpcontact.name}}
+                        </td>
+                        <td>
+                            {{tpcontact.age}}
+                        </td>
+                        <td>
+    
+                            {% if tpcontact.newsletter == 0 %}
+                                <p style="color: red; margin-bottom: 0px;">Non</p>
+                            {% else %}
+                                <p style="color: green; margin-bottom: 0px;">OK</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                <td>Aucun contact enregistré</td>
+                </tr>
+            {% endif %}
+		</tbody>
+	</table>
+
+
+    {# espace #}<div style="height: 120px;"></div>
+
+
+    {% set numberOfTpContact = tpContacts | length %}
+    <h2>Mes demandes de contact (old version) ({{numberOfTpContact}})</h2>
+    {% if numberOfTpContact > 0 %}
+        <div style="display: flex; flex-direction: column;">
+        {% for tpcontact in tpContacts %}
+            <a href="{{path('detailTpContactOldVersion', { id: tpcontact.id, name: tpcontact.name, firstname: tpcontact.firstname, age: tpcontact.age, newsletter: tpcontact.newsletter}) }}">
+                Demande de contact de {{tpcontact.firstname}} {{tpcontact.name}}
+            </a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun contact enregistré</p>
+    {% endif %}
+
+     {# espace #}<div style="height: 120px;"></div>
+
+<div>
+
+{% endblock %}

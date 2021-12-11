@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TP{% endblock %}
+
+{% block body %}
+
+<div class="Centrer"> 
+
+    <h1>{{ controller_name }}</h1>
+
+    {# espace #}<div style="height: 50px;"></div>
+
+    {% if detailContactNewsletter == 0 %}
+        {% set newsletter = "Non" %}
+    {% else %}
+        {% set newsletter = "OK" %}
+    {% endif %}
+
+    <div style="display: flex; flex-direction: column;">
+        <li>Id : <strong>{{detailContactId}}</strong></li>
+        <li>Prénom : <strong>{{detailContactFirstname}}</strong></li>
+        <li>Nom : <strong>{{detailContactName}}</strong></li>
+        <li>Age: <strong>{{detailContactAge}}</strong></li>
+        <li>newsletter : <strong>{{newsletter}}</strong></li>
+    </div>
+    
+    <a style="margin-top: 50px" type="button" class="btn btn-primary" href="{{ path('tp') }}"> Retour </a>
+
+</div>
+
+
+{% endblock %}
